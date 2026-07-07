@@ -35,18 +35,198 @@
       </button>
     </section>
 
-    <!-- PLACEHOLDER MAIN MENU: we will design this next -->
+    <!-- MAIN MENU -->
     <section id="mainMenu" class="screen main-menu" aria-label="Gods of War main menu">
       <div class="menu-card">
         <p class="eyebrow">Main Menu</p>
+
         <h1>GODS OF WAR</h1>
-        <p>This is the placeholder main menu. We will build this screen next.</p>
-        <button id="backToStartButton" class="menu-button" type="button">Back to Start Screen</button>
+
+        <p class="menu-intro">
+          Choose your path into the realm.
+        </p>
+
+        <nav class="menu-options" aria-label="Main menu options">
+          <button class="menu-option-button" type="button" data-page="newGamePage">
+            New Game
+          </button>
+
+          <button class="menu-option-button" type="button" data-page="continuePage">
+            Continue
+          </button>
+
+          <button class="menu-option-button" type="button" data-page="howToPlayPage">
+            How to Play
+          </button>
+
+          <button class="menu-option-button" type="button" data-page="settingsPage">
+            Settings
+          </button>
+
+          <button class="menu-option-button" type="button" data-page="creditsPage">
+            Credits
+          </button>
+        </nav>
+
+        <button id="backToStartButton" class="menu-button" type="button">
+          Back to Start Screen
+        </button>
+      </div>
+    </section>
+
+    <!-- NEW GAME PLACEHOLDER -->
+    <section id="newGamePage" class="screen main-menu menu-page" aria-label="New game placeholder">
+      <div class="menu-card">
+        <p class="eyebrow">New Game</p>
+
+        <h1>ORDER SELECT</h1>
+
+        <p class="menu-intro">
+          This page will become the Player 1 and Player 2 Order selection screen.
+        </p>
+
+        <div class="placeholder-box">
+          <p><strong>Next build:</strong> Player 1 selects an Order, then Player 2 selects an Order.</p>
+          <p>After both players choose, the screen will fade to black and enter the main board.</p>
+        </div>
+
+        <button class="menu-button back-to-menu-button" type="button">
+          Back to Main Menu
+        </button>
+      </div>
+    </section>
+
+    <!-- CONTINUE PLACEHOLDER -->
+    <section id="continuePage" class="screen main-menu menu-page" aria-label="Continue placeholder">
+      <div class="menu-card">
+        <p class="eyebrow">Continue</p>
+
+        <h1>SAVED GAME</h1>
+
+        <p class="menu-intro">
+          This page will later check for saved progress and let players resume a match.
+        </p>
+
+        <div class="placeholder-box">
+          <p><strong>No saved game loaded yet.</strong></p>
+          <p>Once the board exists, this page can show round number, active player, Orders, Powers, Titans, and Gods.</p>
+        </div>
+
+        <button class="menu-button back-to-menu-button" type="button">
+          Back to Main Menu
+        </button>
+      </div>
+    </section>
+
+    <!-- HOW TO PLAY PLACEHOLDER -->
+    <section id="howToPlayPage" class="screen main-menu menu-page" aria-label="How to play placeholder">
+      <div class="menu-card">
+        <p class="eyebrow">How to Play</p>
+
+        <h1>RULES</h1>
+
+        <p class="menu-intro">
+          Players are Orders seeking Elemental Powers. Explore the map, fight hordes, conquer dungeons, recruit Titans, call Gods, and dominate the realm.
+        </p>
+
+        <div class="placeholder-box">
+          <p><strong>Roll:</strong> Move across the map.</p>
+          <p><strong>Dungeons:</strong> Defeat bosses to claim Elemental Powers.</p>
+          <p><strong>Titans:</strong> Enhance your Powers.</p>
+          <p><strong>Gods:</strong> Break the rules of war.</p>
+        </div>
+
+        <button class="menu-button back-to-menu-button" type="button">
+          Back to Main Menu
+        </button>
+      </div>
+    </section>
+
+    <!-- SETTINGS PLACEHOLDER -->
+    <section id="settingsPage" class="screen main-menu menu-page" aria-label="Settings placeholder">
+      <div class="menu-card">
+        <p class="eyebrow">Settings</p>
+
+        <h1>OPTIONS</h1>
+
+        <p class="menu-intro">
+          This page will later hold sound, animation, display, and accessibility options.
+        </p>
+
+        <div class="placeholder-box">
+          <p><strong>Sound effects:</strong> coming later.</p>
+          <p><strong>Reduced motion:</strong> coming later.</p>
+          <p><strong>Large text:</strong> coming later.</p>
+        </div>
+
+        <button class="menu-button back-to-menu-button" type="button">
+          Back to Main Menu
+        </button>
+      </div>
+    </section>
+
+    <!-- CREDITS PLACEHOLDER -->
+    <section id="creditsPage" class="screen main-menu menu-page" aria-label="Credits placeholder">
+      <div class="menu-card">
+        <p class="eyebrow">Credits</p>
+
+        <h1>CREDITS</h1>
+
+        <p class="menu-intro">
+          Gods of War is a mythic two-player boardgame concept about Orders, Elemental Powers, Titans, Gods, warfare, and mastery.
+        </p>
+
+        <div class="placeholder-box">
+          <p><strong>Created by James Ritchie.</strong></p>
+          <p>More artwork notes, build notes, and version information can live here later.</p>
+        </div>
+
+        <button class="menu-button back-to-menu-button" type="button">
+          Back to Main Menu
+        </button>
       </div>
     </section>
 
   </main>
 
   <script src="app.js"></script>
+
+  <script>
+    const menuOptionButtons = document.querySelectorAll(".menu-option-button");
+    const backToMenuButtons = document.querySelectorAll(".back-to-menu-button");
+
+    function hideAllScreens() {
+      document.querySelectorAll(".screen").forEach((screen) => {
+        screen.classList.remove("is-active");
+      });
+    }
+
+    function showMenuPage(pageId) {
+      const page = document.getElementById(pageId);
+
+      if (!page) {
+        console.warn("No page found for:", pageId);
+        return;
+      }
+
+      hideAllScreens();
+      page.classList.add("is-active");
+    }
+
+    function showMainMenu() {
+      hideAllScreens();
+      document.getElementById("mainMenu").classList.add("is-active");
+    }
+
+    menuOptionButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        showMenuPage(button.dataset.page);
+      });
+    });
+
+    backToMenuButtons.forEach((button) => {
+      button.addEventListener("click", showMainMenu);
+    });
+  </script>
 </body>
 </html>
