@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Gods of War</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app" class="app">
+
+    <!-- START SCREEN -->
+    <section id="startScreen" class="screen start-screen is-active" aria-label="Gods of War start screen">
+      <!--
+        Cloudflare image link:
+        Replace YOUR-CLOUDFLARE-DOMAIN with your real Cloudflare Pages domain when ready.
+
+        Example:
+        https://your-site.pages.dev/godsofwartitle.png
+
+        For local / GitHub Pages testing, keep the image file named godsofwartitle.png
+        in the same folder as this index.html.
+      -->
+      <img
+        id="startImage"
+        class="start-image"
+        src="godsofwartitle.png"
+        data-cloudflare-src="https://YOUR-CLOUDFLARE-DOMAIN.pages.dev/godsofwartitle.png"
+        alt="Gods of War title screen with clouds, fire, lightning, and elemental powers"
+        draggable="false"
+      />
+
+      <button id="startTapButton" class="tap-layer" type="button" aria-label="Tap anywhere to enter main menu">
+        <span class="tap-prompt">Tap anywhere to start</span>
+      </button>
+    </section>
+
+    <!-- PLACEHOLDER MAIN MENU: we will design this next -->
+    <section id="mainMenu" class="screen main-menu" aria-label="Gods of War main menu">
+      <div class="menu-card">
+        <p class="eyebrow">Main Menu</p>
+        <h1>GODS OF WAR</h1>
+        <p>This is the placeholder main menu. We will build this screen next.</p>
+        <button id="backToStartButton" class="menu-button" type="button">Back to Start Screen</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
